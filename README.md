@@ -162,23 +162,6 @@ Changing any past block changes its hash, breaking the chain link of every subse
 
 ---
 
-## 🐛 Bugs Fixed (from original)
-
-Eight concurrency bugs were identified and fixed in this implementation:
-
-| # | Bug | Fix |
-|---|---|---|
-| 1 | Variable re-declared across `switch` cases (UB) | All locals declared before `switch` |
-| 2 | `ncurses_mutex` locked while holding `block_mutex` (deadlock) | Ring buffer decouples log writing from display |
-| 3 | `sem_wait` called while mutex held (priority inversion) | Semaphore removed — mutex already protects ledger |
-| 4 | Each miner had its own local `prev_hash` (broken chain) | Single global `prev_hash` under `ctrl_mutex` |
-| 5 | `1UL << (difficulty*4)` overflows at difficulty≥16 (UB) | Iterative nibble check, shifts by 4 at a time |
-| 6 | Miners stuck in `pthread_cond_wait` after UI exits (zombie threads) | Global `terminate` flag + broadcast + join sequence |
-| 7 | Shared globals read without lock inside mining loop (data race) | Periodic mutex-protected abort check every 5000 iterations |
-| 8 | `getch()` called without `ncurses_mutex` (ncurses not thread-safe) | All ncurses calls wrapped with `ncurses_mutex` |
-
----
-
 ## 🔬 Key OS Concepts Demonstrated
 
 - **Race condition prevention** — `ctrl_mutex` protects `block_count`, `ledger[]`, `global_prev_hash`
