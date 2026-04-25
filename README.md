@@ -1,0 +1,2 @@
+# OSPackage
+Blockchain-Inspired Mining Simulator- A multi-threaded mining simulation developed using POSIX threads, semaphores, and condition variables. Incorporated a proof-of-work system with adjustable difficulty and real-time block ledger updates. Employed shared memory and synchronization techniques to simulate block validation across concurrent processes. Included an interactive terminal UI built with the ncurses library for simulation control and live ledger viewing
