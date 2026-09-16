@@ -195,21 +195,3 @@ Changing any past block changes its hash, breaking the chain link of every subse
 ═════════════════════════════════════════════════════════════════
 ```
 
----
-
-## 🖥️ Platform Support
-
-| Platform | Supported |
-|---|---|
-| Ubuntu / Debian | ✅ |
-| WSL2 (Windows) | ✅ |
-| macOS | ✅ (needs `brew install ncurses`) |
-| Fedora / RHEL | ✅ (use `dnf install ncurses-devel`) |
-| Native Windows | ❌ (no POSIX threads) |
-
----
-
-## 👤 Author
-
-**Jovisha** — Operating Systems Project  
-Built with C · POSIX · ncurses
